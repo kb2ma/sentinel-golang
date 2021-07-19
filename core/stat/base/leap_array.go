@@ -71,7 +71,7 @@ func NewAtomicBucketWrapArrayWithTime(len int, bucketLengthInMs uint32, now uint
 	}
 
 	timeId := now / uint64(bucketLengthInMs)
-	idx := int(timeId) % len
+	idx := int(timeId % uint64(len))
 	startTime := calculateStartTime(now, bucketLengthInMs)
 
 	for i := idx; i <= len-1; i++ {
